@@ -1,0 +1,33 @@
+# 构建并验证 IntelliJ 插件（可用于 PR / push 时自动测试）
+name: Build Plugin
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build plugin with Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: 8.5
+          arguments: buildPlugin --no-daemon
+
+      - name: Upload plugin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: annotation-runner-plugin
+          path: build/distributions/*.zip

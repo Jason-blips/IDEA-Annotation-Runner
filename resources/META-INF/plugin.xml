@@ -23,8 +23,17 @@
         <action id="RunAnnotatedMethods"
                 class="com.rzf.annotationrunner.RunAnnotatedMethodsAction"
                 text="Run Annotated Methods"
-                description="Scan and run all methods with annotations">
+                description="Scan and run all methods with annotations in current file">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt R"/>
+        </action>
+        <action id="RunCurrentAnnotatedMethod"
+                class="com.rzf.annotationrunner.RunCurrentAnnotatedMethodAction"
+                text="Run Current Annotated Method"
+                description="Run only the method at caret (must have runnable annotation)">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt shift R"/>
         </action>
     </actions>
 </idea-plugin>

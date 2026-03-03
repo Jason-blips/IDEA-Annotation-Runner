@@ -2,8 +2,10 @@
 
 在 IntelliJ IDEA 中扫描并运行带有注解的 Java 方法（如 `@RunTest`），无需写 main 或单元测试。
 
-- **菜单**：**Tools → Run Annotated Methods**
-- **要求**：方法为 `public`、非 `static`、无参，且带有任意可执行注解（如 `@Test`、自定义 `@RunTest`；`@Override`、`@Deprecated` 等会被忽略）。
+- **菜单**：**Tools → Run Annotated Methods**（运行当前文件内所有可运行方法）/ **Run Current Annotated Method**（仅运行光标所在方法）。
+- **要求**：方法为 `public`、无参（支持 **static**），且带有任意可执行注解（如 `@Test`、自定义 `@RunTest`；`@Override`、`@Deprecated` 等会被忽略）。
+- **快捷键**：**Ctrl+Alt+R** 运行文件中全部；**Alt+Shift+R** 运行当前方法。
+- **内部类**：顶层类与内部类中的可运行方法都会被扫描；多个方法时会弹出选择对话框。
 
 ---
 
@@ -57,11 +59,12 @@ gradle buildPlugin
    ```
    `@Override`、`@Deprecated`、`@SuppressWarnings` 等仅用于标记的注解会被自动跳过，不会执行。
 
-2. 确保方法为 **public、非 static、无参**，且项目已编译（Build → Build Project）。
+2. 确保方法为 **public、无参**（可为 static），且项目已编译（Build → Build Project）。
 
-3. 在编辑器中打开该 Java 文件，菜单选择 **Tools → Run Annotated Methods**。
+3. **运行全部**：打开该 Java 文件，菜单 **Tools → Run Annotated Methods**（或 **Ctrl+Alt+R**）。若有多个可运行方法，会先弹出列表供勾选再执行。  
+   **运行当前**：光标放在某个可运行方法内，菜单 **Tools → Run Current Annotated Method**（或 **Alt+Shift+R**），或在编辑区右键选该项。
 
-4. 插件会依次执行当前文件中所有符合条件的方法，输出在 **Run** 窗口。
+4. 插件会依次执行所选方法，输出在 **Run** 窗口；类路径会包含当前模块及依赖，减少 ClassNotFoundException。
 
 ---
 
