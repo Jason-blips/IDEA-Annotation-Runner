@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>com.rzf.annotationrunner</id>
+    <name>Annotation Runner</name>
+    <vendor>Zhuoran Fu</vendor>
+    <version>1.0</version>
+    <description><![CDATA[
+        A plugin that scans and runs methods with annotations directly from IDEA.
+    ]]></description>
+
+    <change-notes><![CDATA[
+        Initial version with basic annotation scanning and method execution.
+    ]]></change-notes>
+
+    <idea-version since-build="233"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+    <actions>
+        <action id="RunAnnotatedMethods"
+                class="com.rzf.annotationrunner.RunAnnotatedMethodsAction"
+                text="Run Annotated Methods"
+                description="Scan and run all methods with annotations">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
