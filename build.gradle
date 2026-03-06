@@ -6,6 +6,17 @@ plugins {
 group = 'com.example.runner'
 version = '1.0-SNAPSHOT'
 
+archivesBaseName = 'annotation-runner'
+
+// 项目使用非标准目录结构：Java 在 src/，资源在 resources/
+// Gradle 默认期望 src/main/java 和 src/main/resources，需显式配置
+sourceSets {
+    main {
+        java.srcDirs = ['src']
+        resources.srcDirs = ['resources']
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -17,8 +28,8 @@ intellij {
 }
 
 patchPluginXml {
-    sinceBuild.set("232")
-    untilBuild.set("241.*")
+    sinceBuild.set("233")   // 与 intellij { version = '2023.3' } 对应
+    untilBuild.set("252.*") // 支持到 IDEA 2025.2 (build 252)
 }
 
 tasks {

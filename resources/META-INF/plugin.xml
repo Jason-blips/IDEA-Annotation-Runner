@@ -4,11 +4,27 @@
     <vendor>Zhuoran Fu</vendor>
     <version>1.0</version>
     <description><![CDATA[
-        A plugin that scans and runs methods with annotations directly from IDEA.
+      <h3>Annotation Runner</h3>
+      <p>在 IntelliJ IDEA 中直接扫描并运行带有注解的 Java 方法，无需编写 main 或单元测试。</p>
+      <h4>功能</h4>
+      <ul>
+        <li><b>Run Annotated Methods</b>：扫描当前文件内所有可运行方法（支持内部类），多个方法时弹出选择对话框</li>
+        <li><b>Run Current Annotated Method</b>：仅运行光标所在的方法</li>
+      </ul>
+      <h4>要求</h4>
+      <p>方法需为 <code>public</code>、无参（支持 <code>static</code>），且带有可执行注解（如 <code>@Test</code>、<code>@RunTest</code> 等）。<code>@Override</code>、<code>@Deprecated</code> 等标记性注解会被自动忽略。</p>
+      <h4>快捷键</h4>
+      <p><b>Ctrl+Alt+R</b> 运行全部；<b>Alt+Shift+R</b> 运行当前方法。</p>
     ]]></description>
 
     <change-notes><![CDATA[
-        Initial version with basic annotation scanning and method execution.
+      <h4>1.0-SNAPSHOT</h4>
+      <ul>
+        <li>支持 IntelliJ IDEA 2023.3 ～ 2025.2</li>
+        <li>扫描并运行带注解的 public 无参方法</li>
+        <li>支持内部类、多方法选择对话框</li>
+        <li>自动解析模块类路径，减少 ClassNotFoundException</li>
+      </ul>
     ]]></change-notes>
 
     <idea-version since-build="233"/>
